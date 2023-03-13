@@ -11,7 +11,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-
 public class SchoolPen {
     private String id;
     private String brand;
@@ -40,36 +39,24 @@ public class SchoolPen {
         numPencils--;
     }
     public void printAll(){
-        System.out.println("ID- "+id + "\t" + "Brand- "+brand + "\t" + "Color- "+color + "\t" + "Materia- "+material + "\t" + "Size- "+size + "\t" + "NumPencils- "+numPencils + "\t" + "NumPens- "+numPens + "\t" + "NumErasers"+numErasers);
+        System.out.println("ID- "+id + "\t" + "Brand- "+brand + "\t" + "Color- "+color + "\t" + "Materia- "+material + "\t" + "Size- "+size + "\t" + "NumPencils- "+numPencils + "\t" + "NumPens- "+numPens + "\t" + "NumErasers"+numErasers + "\n");
     }
 
-
     public static void main(String[] args) {
-       SchoolPen[] pencilscase = new SchoolPen[3];
-       pencilscase[0] = new SchoolPen("lgp-67","Big","green","cloth",11,4,2,1);
-       pencilscase[1] = new SchoolPen("sf-90","Kite","yellow","cloth",17,7,3,1);
-       pencilscase[2] = new SchoolPen("clo7b","Carhartt","blue","cloth",20,8,1,1);
+       SchoolPen[] pencilscase = {
+               new SchoolPen("lgp-67", "Big", "green", "cloth", 11, 4, 2, 1),
+               new SchoolPen(),
+               SchoolPen.getInstance()};
 
-       int i = 0;
-       while (i < pencilscase.length){
-            pencilscase[i].printAll();
-            i++;
-        }
-       i =0;
+       for (SchoolPen pencilcase: pencilscase) pencilcase.printAll();
 
        pencilscase[0].removePen();
        pencilscase[1].removePencils();
        pencilscase[2].addPen();
        pencilscase[2].addPencil();
 
-       System.out.println("\n");
+        for (SchoolPen pencilcase: pencilscase) pencilcase.printAll();
 
-        while (i < pencilscase.length){
-            pencilscase[i].printAll();
-            i++;
-        }
-
-        pencilscase[0] = getInstance();
 
 
     }
