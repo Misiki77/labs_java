@@ -1,32 +1,30 @@
 package ua.lviv.iot.algo.part1.lab1;
-import com.sun.source.tree.Scope;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class SchoolPen {
-    private String id;
-    private String brand;
-    private String color;
-    private String material;
-    private int size;
+@ToString(callSuper = true)
+
+public class SchoolPen extends Pen {
+
     private int numPencils;
     private int numPens;
     private int numErasers;
+
+    private final int Pencils_price_in_gryvnias = 7;
+    private final int Pen_price_in_gryvnias = 15;
+    private final int Eraser_price_in_gryvnias = 10;
 
     private static SchoolPen instance = new SchoolPen();
     public static SchoolPen getInstance(){
         return  instance;
     }
 
-    public void addPen() {
+    public void addPen(SchoolPen schoolPen) {
             numPens++;
     }
     public void addPencil(){
@@ -38,26 +36,19 @@ public class SchoolPen {
     public void removePencils(){
         numPencils--;
     }
-    public void printAll(){
-        System.out.println("ID- "+id + "\t" + "Brand- "+brand + "\t" + "Color- "+color + "\t" + "Materia- "+material + "\t" + "Size- "+size + "\t" + "NumPencils- "+numPencils + "\t" + "NumPens- "+numPens + "\t" + "NumErasers"+numErasers + "\n");
+
+    public SchoolPen(String id, String brand, String color, String material, int size, int numPencils,int numPens,int numErasers){
+        super(id, brand, color, material, size);
+        this.numPencils = numPencils;
+        this.numPens = numPens;
+        this.numErasers = numErasers;
     }
 
-    public static void main(String[] args) {
-       SchoolPen[] pencilscase = {
-               new SchoolPen("lgp-67", "Big", "green", "cloth", 11, 4, 2, 1),
-               new SchoolPen(),
-               SchoolPen.getInstance()};
+    @Override
+    public void calculatePrice() {
+        int price;
 
-       for (SchoolPen pencilcase: pencilscase) pencilcase.printAll();
-
-       pencilscase[0].removePen();
-       pencilscase[1].removePencils();
-       pencilscase[2].addPen();
-       pencilscase[2].addPencil();
-
-        for (SchoolPen pencilcase: pencilscase) pencilcase.printAll();
-
-
-
+        price = Pencils_price_in_gryvnias * numPencils + Pen_price_in_gryvnias * numPens + Eraser_price_in_gryvnias + numErasers;
+        System.out.println(price+"uah");
     }
 }
