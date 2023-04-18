@@ -1,4 +1,4 @@
-package ua.lviv.iot.algo.part1.lab1;
+package org.example;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -15,16 +15,13 @@ public class SchoolPen extends Pen {
     private int numPens;
     private int numErasers;
 
-    private final int Pencils_price_in_gryvnias = 7;
-    private final int Pen_price_in_gryvnias = 15;
-    private final int Eraser_price_in_gryvnias = 10;
+    private final int pencilsPriceInGryvnias = 7;
+    private final int penPriceInGryvnias = 15;
+    private final int eraserPriceInGryvnias = 10;
 
     private static SchoolPen instance = new SchoolPen();
-    public static SchoolPen getInstance(){
-        return  instance;
-    }
 
-    public void addPen(SchoolPen schoolPen) {
+    public void addPen() {
             numPens++;
     }
     public void addPencil(){
@@ -33,10 +30,7 @@ public class SchoolPen extends Pen {
     public void removePen(){
         numPens--;
     }
-    public void removePencils(){
-        numPencils--;
-    }
-
+    public void removePencils(){numPencils--;}
     public SchoolPen(String id, String brand, String color, String material, int size, int numPencils,int numPens,int numErasers){
         super(id, brand, color, material, size);
         this.numPencils = numPencils;
@@ -46,9 +40,16 @@ public class SchoolPen extends Pen {
 
     @Override
     public void calculatePrice() {
-        int price;
+       int price = pencilsPriceInGryvnias * numPencils + penPriceInGryvnias * numPens + eraserPriceInGryvnias + numErasers;
+    }
 
-        price = Pencils_price_in_gryvnias * numPencils + Pen_price_in_gryvnias * numPens + Eraser_price_in_gryvnias + numErasers;
-        System.out.println(price+"uah");
+    public String getHeaders(){
+        return super.getHeaders()+" numPens"+","+" numPencils"+","+" numErasers"+","+" pencilsPriceInGryvnias"+","+" penPriceInGryvnias"+","+" eraserPriceInGryvnias";
+    }
+    public String toCSV(){
+        return super.toCSV()+", "+numPens+", "+numPencils+", "+numErasers+", "+penPriceInGryvnias+", "+pencilsPriceInGryvnias+", "+eraserPriceInGryvnias;
+    }
+    public String getTitle(){
+        return "SchoolPen";
     }
 }
