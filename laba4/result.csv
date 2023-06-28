@@ -1,0 +1,16 @@
+SchoolPen
+id, brand, color, material, size, numPens, numPencils, numErasers, pencilsPriceInGryvnias, penPriceInGryvnias, eraserPriceInGryvnias
+rs-44, Kite, yellow, cloth, 13, 2, 2, 1, 15, 7, 10
+
+MarkerPen
+id, brand, color, material, size, numMarkers, markerType, markerPriceInGryvnias
+wep3, Camel, purple, plastic, 11, 11, for drowing, 23
+
+FeatherPen
+id, brand, color, material, size, feather_type, ink_type, numFeatherPens, featherPenPriceInGryvnias
+klot-666, Big, black, feather, 21, chiken's feather, octopus' ink, 3, 40
+
+OilPen
+id, brand, color, material, size, oilType, numOilPens, oilPenPriceInGryvnias
+tgr44, Parlament, black, mettalic, 15, olive oil, 4, 55
+
